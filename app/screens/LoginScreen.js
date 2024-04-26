@@ -38,7 +38,7 @@ const LoginScreen = () => {
     };
 
     axios
-      .post("http://10.0.2.2:8000/login", user)
+      .post(`${process.env.REACT_APP_DEV_URL}/login`, user)
       .then((response) => {
         console.log(response);
         const token = response.data.token;

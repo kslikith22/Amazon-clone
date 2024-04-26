@@ -53,7 +53,7 @@ const ProfileScreen = () => {
     const fetchUserProfile = async () => {
       try {
         const response = await axios.get(
-          `http://10.0.2.2:8000/profile/${userId}`
+          `${process.env.REACT_APP_DEV_URL}/profile/${userId}`
         );
         const { user } = response.data;
         setUser(user);
@@ -76,13 +76,13 @@ const ProfileScreen = () => {
     const fetchOrders = async () => {
       try {
         const response = await axios.get(
-          `http://10.0.2.2:8000/orders/${userId}`
+          `${process.env.REACT_APP_DEV_URL}/orders/${userId}`
         );
         const orders = response.data.orders;
         setOrders(orders);
         setLoading(false);
       } catch (error) {
-        setLoading(false)
+        setLoading(false);
         console.log("error", error);
       }
     };
@@ -103,8 +103,7 @@ const ProfileScreen = () => {
           gap: 10,
           marginTop: 12,
         }}
-      >
-      </View>
+      ></View>
       <ScrollView horizontal showsHorizontalScrollIndicator={false}>
         {loading ? (
           <Text>Loading...</Text>
@@ -130,6 +129,11 @@ const ProfileScreen = () => {
                     source={{ uri: product.image }}
                     style={{ width: 100, height: 100, resizeMode: "contain" }}
                   />
+                  <Text style={{ width: 90 }}>
+                    {product.name.length > 20
+                      ? `${product.name.slice(0, 20)}...`
+                      : product.name}
+                  </Text>
                 </View>
               ))}
             </Pressable>

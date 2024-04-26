@@ -30,7 +30,7 @@ const ConfirmationScreen = () => {
   const fetchAddresses = async () => {
     try {
       const response = await axios.get(
-        `http://10.0.2.2:8000/addresses/${userId}`
+        `${process.env.REACT_APP_DEV_URL}/addresses/${userId}`
       );
       const { addresses } = response.data;
 
@@ -54,7 +54,7 @@ const ConfirmationScreen = () => {
       };
 
       const response = await axios.post(
-        "http://10.0.2.2:8000/orders",
+        `${process.env.REACT_APP_DEV_URL}/orders`,
         orderData
       );
       if (response.status === 200) {
@@ -97,7 +97,7 @@ const ConfirmationScreen = () => {
       };
 
       const response = await axios.post(
-        "http://10.0.2.2:8000/orders",
+        `${process.env.REACT_APP_DEV_URL}/orders`,
         orderData
       );
       if (response.status === 200) {

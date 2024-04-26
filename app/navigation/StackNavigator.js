@@ -15,7 +15,6 @@ import CartScreen from "../screens/CartScreen";
 import ProfileScreen from "../screens/ProfileScreen";
 import ConfirmationScreen from "../screens/ConfirmationScreen";
 import OrderScreen from "../screens/OrderScreen";
-import SearchScreen from "../screens/SearchScreen";
 
 const StackNavigator = () => {
   const Stack = createNativeStackNavigator();
@@ -89,11 +88,6 @@ const StackNavigator = () => {
           name="Info"
           component={ProductInfoScreen}
           options={{ headerShown: true }}
-        />
-           <Stack.Screen
-          name="Search"
-          component={SearchScreen}
-          options={{ headerShown: false }}
         />
         <Stack.Screen
           name="Address"

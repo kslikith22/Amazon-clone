@@ -236,7 +236,7 @@ const HomeScreen = () => {
   const fetchAddresses = async () => {
     try {
       const response = await axios.get(
-        `http://10.0.2.2:8000/addresses/${userId}`
+        `${process.env.REACT_APP_DEV_URL}/addresses/${userId}`
       );
       const { addresses } = response.data;
 
@@ -268,38 +268,6 @@ const HomeScreen = () => {
         <ScrollView>
           <View style={{padding : 20 , backgroundColor : '#00CED1'}}>
           </View>
-          <View
-            style={{
-              backgroundColor: "#00CED1",
-              padding: 10,
-              flexDirection: "row",
-              alignItems: "center",
-            }}
-          >
-            <Pressable
-              style={{
-                flexDirection: "row",
-                alignItems: "center",
-                marginHorizontal: 7,
-                gap: 10,
-                backgroundColor: "white",
-                borderRadius: 3,
-                height: 38,
-                flex: 1,
-              }}
-            >
-              <AntDesign
-                style={{ paddingLeft: 10 }}
-                name="search1"
-                size={22}
-                color="black"
-              />
-              <TextInput placeholder="Search Amazon.in" />
-            </Pressable>
-
-            <Feather name="mic" size={24} color="black" />
-          </View>
-
           <Pressable
             onPress={() => setModalVisible(!modalVisible)}
             style={{
