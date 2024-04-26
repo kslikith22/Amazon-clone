@@ -20,7 +20,7 @@ app.use(require('morgan')('dev'))
 
 
 mongoose
-  .connect("mongodb+srv://likith:likith@cluster0.rdetra7.mongodb.net/ecommerce?retryWrites=true&w=majority", {
+  .connect(process.env.MONGO_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })

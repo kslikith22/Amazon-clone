@@ -8,7 +8,7 @@ const login = async (req, res) => {
     const { phone } = req.body;
     const user = await User.findOne({ phone });
     if (user) {
-      token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET);
+    token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET);
      return res.status(200).json({ token });
     }
     const newUser = new User ({phone})
@@ -16,7 +16,7 @@ const login = async (req, res) => {
     token = jwt.sign({ userId: newUser._id }, process.env.JWT_SECRET);
     return res.status(200).json({ token });
   } catch (error) {
-    return res.status(500).json({ message: "Login Failed" });
+    return res.status(500).json({ message: "Login Failed"+error.message });
   }
 };
 
